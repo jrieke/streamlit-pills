@@ -31,7 +31,7 @@ pip install streamlit-pills
 
 ```python
 from streamlit_pills import pills
-selected = pills("Label", ["Option 1", "Option 2", "Option 3"])
+selected = pills("Label", ["Option 1", "Option 2", "Option 3"], ["🍀", "🎈", "🌈"])
 st.write(selected)
 ```
 
