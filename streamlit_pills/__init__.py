@@ -1,10 +1,9 @@
 from pathlib import Path
-from typing import Iterable, List, Union
-import streamlit as st
+from typing import Iterable, Union
 
 import streamlit.components.v1 as components
 
-_RELEASE = False
+_RELEASE = True
 
 if not _RELEASE:
     _component_func = components.declare_component("pills", url="http://localhost:3001")
@@ -27,17 +26,17 @@ def pills(
     Args:
         label (str): The label shown above the pills.
         options (iterable of str): The texts shown inside each pill.
-        icons (iterable of str, optional): The emoji icons shown on the left side of the 
-            pills. Each item must be a single emoji. Default to None. 
+        icons (iterable of str, optional): The emoji icons shown on the left side of the
+            pills. Each item must be a single emoji. Default to None.
         index (int or None, optional): The index of the pill that is selected by default.
             If None, no pill is selected. Defaults to 0.
-        clearable (bool, optional): Whether the user can unselect the selected pill by 
-            clicking on it. If None, this is possible if `index` is set to None. 
-            Defaults to None. 
+        clearable (bool, optional): Whether the user can unselect the selected pill by
+            clicking on it. If None, this is possible if `index` is set to None.
+            Defaults to None.
         key (str, optional): The key of the component. Defaults to None.
 
     Returns:
-        (any): The text of the pill selected by the user (same value as in `options`). 
+        (any): The text of the pill selected by the user (same value as in `options`).
     """
 
     # Do some checks to verify the input.
@@ -54,7 +53,7 @@ def pills(
             f"but it is {index}."
         )
     # TODO: Verify that icons are actually emoji icons.
-    
+
     if clearable is None and index is None:
         clearable = True
 
