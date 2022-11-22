@@ -17,7 +17,7 @@ dropdown.
 ---
 
 <p align="center">
-    <a href="https://pills.streamlit.app/"><img src="images/demo.gif" width=600></a>
+    <a href="https://pills.streamlit.app/"><img src="images/demo.png" width=600></a>
 </p>
 
 
