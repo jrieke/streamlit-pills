@@ -1,0 +1,78 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    text-size-adjust: 100%;
+    margin: 0;
+}
+
+label {
+    font-size: 14px;
+    color: rgb(49, 51, 63);
+    margin-bottom: 0.5rem;
+    height: auto;
+    min-height: 1.5rem;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem; /* fix issue with element getting cut off */
+}
+
+.pill {
+    background: #fff;
+    border: 1px solid #D6D6D8;
+    border-radius: 1rem;
+    padding: 0.1rem 0.5rem;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.pill:hover, .pill.dark:hover {
+    border-color: var(--primary-color);
+    /* border-color: #BEC5D3; */
+    cursor: pointer;
+    color: var(--primary-color)
+}
+
+.pill.selected, .pill.dark.selected {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    /* border-color: #808495; */
+    /* color: #FAFAFA; */
+    color: #FFF;
+}
+
+.pill.dark {
+    /* background: #31333F; */
+    /* border-color: #31333F; */
+    background: #131720;
+    border-color: #42444C;
+    color: #FAFAFA;
+}
+
+/* .pill.dark:hover {
+    border-color: #555867;
+    cursor: pointer;
+} */
+
+.icon {
+    font-size: 10px;
+    padding-right: 0.4rem;
+    padding-left: 0.1rem;
+}
