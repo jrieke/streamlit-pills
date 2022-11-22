@@ -118,5 +118,8 @@ poetry publish
 
 ## Changelog
 
+### 0.2.0 (November 22, 2022)
+- Added `format_func` parameter to allow formatting the pill texts
+
 ### 0.1.2 (November 22, 2022)
 - First functioning release
