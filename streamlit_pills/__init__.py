@@ -25,7 +25,7 @@ def pills(
 
     Args:
         label (str): The label shown above the pills.
-        options (iterable of str): The texts shown inside each pill.
+        options (iterable of str): The texts shown inside of the pills.
         icons (iterable of str, optional): The emoji icons shown on the left side of the
             pills. Each item must be a single emoji. Default to None.
         index (int or None, optional): The index of the pill that is selected by default.
