@@ -3,7 +3,7 @@ from typing import Iterable, Union, Callable
 
 import streamlit.components.v1 as components
 
-_RELEASE = True
+_RELEASE = False
 
 if not _RELEASE:
     _component_func = components.declare_component("pills", url="http://localhost:3001")
@@ -19,6 +19,7 @@ def pills(
     index: Union[int, None] = 0,
     *,
     format_func: Callable = None,
+    label_visibility: str = "visible",
     clearable: bool = None,
     key: str = None,
 ):
@@ -33,6 +34,9 @@ def pills(
             If None, no pill is selected. Defaults to 0.
         format_func (callable, optional): A function that is applied to the pill text 
             before rendering. Defaults to None.
+        label_visibility ("visible" or "hidden" or "collapsed", optional): The visibility 
+            of the label. Use this instead of `label=""` for accessibility. Defaults to 
+            "visible".
         clearable (bool, optional): Whether the user can unselect the selected pill by
             clicking on it. If None, this is possible if `index` is set to None.
             Defaults to None.
@@ -55,6 +59,11 @@ def pills(
             f"`index` must be smaller than the number of options ({len(options)}) "
             f"but it is {index}."
         )
+    if label_visibility not in ["visible", "hidden", "collapsed"]:
+        raise ValueError(
+            f"`label_visibility` must be one of 'visible', 'hidden' or 'collapsed' "
+            f"but it is {label_visibility}."
+        )
     # TODO: Verify that icons are actually emoji icons.
 
     if clearable is None and index is None:
@@ -71,6 +80,7 @@ def pills(
         options=formatted_options,
         icons=icons,
         index=index,
+        label_visibility=label_visibility,
         clearable=clearable,
         key=key,
         default=index,

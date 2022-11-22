@@ -18,8 +18,16 @@ function onRender(event: Event): void {
   let options = data.args["options"]
   let icons = data.args["icons"]
   let index = data.args["index"]
+  let label_visibility = data.args["label_visibility"]
   let clearable = data.args["clearable"]
   // console.log(captions)
+
+  if (label_visibility === "hidden") {
+    labelDiv.style.visibility = "hidden"
+  }
+  if (label_visibility === "collapsed") {
+    labelDiv.style.display = "none"
+  }
 
   if (container.childNodes.length === 0) {
     options.forEach((option: string, i: number) => {
@@ -64,7 +72,6 @@ function onRender(event: Event): void {
   if (data.theme) {
     labelDiv.style.font = data.theme.font
     labelDiv.style.color = data.theme.textColor
-    // TODO: Update this with correct classes.
     if (data.theme.base === "dark") {
       document.body.querySelectorAll(".pill").forEach((el) => {
         el.classList.add("dark")
