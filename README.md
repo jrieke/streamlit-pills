@@ -11,13 +11,13 @@ dropdown.
 ---
 
 <h3 align="center">
-  💊 <a href="https://pills.streamlit.app/">Demo app</a> 💊
+  💊 <a href="https://pills-component.streamlit.app/">Demo app</a> 💊
 </h3>
 
 ---
 
 <p align="center">
-    <a href="https://pills.streamlit.app/"><img src="images/demo.png"></a>
+    <a href="https://pills-component.streamlit.app/"><img src="images/demo.png"></a>
 </p>
 
 
@@ -35,7 +35,7 @@ selected = pills("Label", ["Option 1", "Option 2", "Option 3"], ["🍀", "🎈",
 st.write(selected)
 ```
 
-See [the demo app](https://pills.streamlit.app/) for a detailed guide!
+See [the demo app](https://pills-component.streamlit.app/) for a detailed guide!
 
 
 ## Development
