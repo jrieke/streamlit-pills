@@ -1,2 +1,2 @@
 streamlit==1.15.1
-streamlit-pills==0.1.0
+streamlit-pills==0.1.1
