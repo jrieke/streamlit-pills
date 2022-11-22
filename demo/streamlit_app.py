@@ -2,6 +2,9 @@ import streamlit as st
 
 from streamlit_pills import pills
 
+"# 💊 Demo for [streamlit-pills](https://github.com/jrieke/streamlit-pills)"
+"## Example"
+
 options = [
     "General widgets",
     "Charts",
@@ -45,6 +48,7 @@ icons = [
 ]
 
 selected = pills("Select a category", options, icons, index=None)
-st.write(selected)
+st.write("You selected:", selected)
 
-st.button("foo")
+"## API reference"
+st.help(pills)
