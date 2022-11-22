@@ -118,5 +118,5 @@ poetry publish
 
 ## Changelog
 
-### 0.1.0 (November 22, 2022)
-- Initial version
+### 0.1.2 (November 22, 2022)
+- First functioning release

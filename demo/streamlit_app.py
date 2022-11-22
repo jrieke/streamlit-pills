@@ -47,7 +47,7 @@ icons = [
     "📦",
 ]
 
-selected = pills("Select a category", options, icons, index=None)
+selected = pills("Select a category", options, icons)
 st.write("You selected:", selected)
 
 "## API reference"
