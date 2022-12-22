@@ -16,10 +16,11 @@ def pills(
     label: str,
     options: Iterable[str],
     icons: Iterable[str] = None,
-    index: Union[int, None] = 0,
+    index: Union[int, Iterable[int], None] = 0,
     *,
     format_func: Callable = None,
     label_visibility: str = "visible",
+    multiselect: bool = False,
     clearable: bool = None,
     key: str = None,
 ):
@@ -39,7 +40,7 @@ def pills(
             "visible".
         clearable (bool, optional): Whether the user can unselect the selected pill by
             clicking on it. If None, this is possible if `index` is set to None.
-            Defaults to None.
+            Defaults to None. If multiselect=True clearable is always True.
         key (str, optional): The key of the component. Defaults to None.
 
     Returns:
@@ -54,11 +55,24 @@ def pills(
             "The number of options and icons must be equal but `options` has "
             f"{len(options)} elements and `icons` has {len(icons)} elements."
         )
-    if index is not None and index >= len(options):
-        raise ValueError(
-            f"`index` must be smaller than the number of options ({len(options)}) "
-            f"but it is {index}."
-        )
+
+    if multiselect:
+        if index and not isinstance(index,list):
+            raise TypeError(f"index must be a list or None")
+        if any([i >= len(options) for i in index]):
+            raise ValueError(
+                f"`index` values must be smaller than the number of options ({len(options)}) "
+                f"but it is {index}."
+            )
+    else:
+        if index and not isinstance(index,int):
+            raise TypeError(f"index must be an int or None if not using multiselect")
+        if index is not None and index >= len(options):
+            raise ValueError(
+                f"`index` must be smaller than the number of options ({len(options)}) "
+                f"but it is {index}."
+            )
+        index=[index]
     if label_visibility not in ["visible", "hidden", "collapsed"]:
         raise ValueError(
             f"`label_visibility` must be one of 'visible', 'hidden' or 'collapsed' "
@@ -68,6 +82,8 @@ def pills(
 
     if clearable is None and index is None:
         clearable = True
+    if multiselect:
+        clearable = True
         
     if format_func:
         formatted_options = [format_func(option) for option in options]
@@ -75,12 +91,14 @@ def pills(
         formatted_options = options
 
     # Pass everything to the frontend.
+    
     component_value = _component_func(
         label=label,
         options=formatted_options,
         icons=icons,
         index=index,
         label_visibility=label_visibility,
+        multiselect=multiselect,
         clearable=clearable,
         key=key,
         default=index,
@@ -88,7 +106,7 @@ def pills(
 
     # The frontend component returns the index of the selected pill but we want to
     # return the actual value of it.
-    if component_value is None or component_value == "None":
+    if not component_value:
         return None
     else:
-        return options[component_value]
+        return [options[v] for v in component_value]

@@ -18,6 +18,7 @@ function onRender(event: Event): void {
   let options = data.args["options"]
   let icons = data.args["icons"]
   let index = data.args["index"]
+  let multiselect = data.args["multiselect"]
   let label_visibility = data.args["label_visibility"]
   let clearable = data.args["clearable"]
   // console.log(captions)
@@ -42,7 +43,7 @@ function onRender(event: Event): void {
 
       pill.appendChild(document.createTextNode(option))
 
-      if (i === index) {
+      if (index.includes(i)) {
         pill.classList.add("selected")
       }
 
@@ -51,19 +52,24 @@ function onRender(event: Event): void {
         // again. I.e. if this pill (which is clicked) was already selected before, we
         // unselect it later.
         let unselect = clearable && pill.classList.contains("selected")
-
-        container.querySelectorAll(".selected").forEach((el) => {
-          el.classList.remove("selected")
-        })
-
         if (unselect) {
-          // Need to pass a string here and convert it to None on the Python side.
-          // If setting null, the components lib returns the "default" value (=index).
-          Streamlit.setComponentValue("None")
-        } else {
-          Streamlit.setComponentValue(i)
+          pill.classList.remove("selected")
+          var ind = index.indexOf(i);
+          if (ind !== -1) {
+            index.splice(ind, 1);
+          }
+        }else{
+          if (!multiselect){
+            container.querySelectorAll(".selected").forEach((el) => {
+              el.classList.remove("selected")
+            })
+            index=[]
+          }
           pill.classList.add("selected")
+          index.push(i)
         }
+        
+        Streamlit.setComponentValue(index) 
       }
     })
   }

@@ -56,5 +56,9 @@ icons = [
 selected = pills("Select a category", options, icons)
 st.write("You selected:", selected)
 
+st.header("Multiselect example")
+
+selected = pills("Select a category", options, icons, index=[0,1], multiselect=True)
+
 "## API reference"
 st.help(pills)
