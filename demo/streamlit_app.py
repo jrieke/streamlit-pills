@@ -3,6 +3,7 @@ import streamlit as st
 from streamlit_pills import pills
 
 st.set_page_config("Demo for streamlit-pills", "💊")
+st.warning("This component is deprecated. It's now available in Streamlit itself via st.pills, see docs. This component will not be updated anymore.")
 st.write(
     f'<span style="font-size: 78px; line-height: 1">💊</span>',
     unsafe_allow_html=True,
