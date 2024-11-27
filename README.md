@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This component is deprecated. It's now available in Streamlit itself via `st.pills`, see [docs](https://docs.streamlit.io/develop/api-reference/widgets/st.pills). This component will not be updated anymore. 
+
 # streamlit-pills 💊
 
 [![PyPI](https://img.shields.io/pypi/v/streamlit-pills)](https://pypi.org/project/streamlit-pills/)
